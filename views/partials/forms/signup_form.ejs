@@ -1,0 +1,65 @@
+<h1>Sign Up</h1>
+<form action="" method="post">
+  <div class="form-group">
+    <label for="first_name">First Name:</label>
+    <input
+      type="text"
+      id="first_name"
+      class="form-control"
+      placeholder="First name"
+      name="first_name"
+      value="<%= member ? member.first_name: '' %>"
+    />
+    <label for="last_name">Last Name:</label>
+    <input
+      type="text"
+      id="last_name"
+      class="form-control"
+      placeholder="Last name"
+      name="last_name"
+      value="<%= member ? member.last_name: '' %>"
+    />
+  </div>
+  <div class="form-group">
+    <label for="username">Username:</label>
+    <input
+      type="text"
+      id="username"
+      class="form-control"
+      placeholder="username"
+      name="username"
+      value="<%= member ? member.username: '' %>"
+    />
+    <label for="password">Password:</label>
+    <input
+      type="password"
+      id="password"
+      class="form-control"
+      placeholder="password"
+      name="password"
+    />
+    <label for="confirmPassword">Confirm Password:</label>
+    <input
+      type="password"
+      id="confirmPassword"
+      class="form-control"
+      placeholder="confirm password"
+      name="confirmPassword"
+    />
+  </div>
+  <div class="form-group">
+    <label for="admin">Admin:</label>
+    <input type="checkbox" id="admin" class="form-control" name="admin" />
+  </div>
+  <button class="btn btn-primary" type="submit">Sign Up</button>
+</form>
+<% if (errors) { %>
+<ul>
+  <% errors.forEach(error => { %>
+  <li><%= error.msg %></li>
+  <% }); } %>
+</ul>
+
+<%- contentFor('sidebar') %> <% action_list.forEach(action => { %>
+<li><a href="<%= action %>"><%= action %></a></li>
+<% }) %>

@@ -1,0 +1,38 @@
+<h1>Posts</h1>
+<p>
+  Hi <%= currentUser ? currentUser.username : 'not there' %>, here are the
+  posts.
+</p>
+<dl>
+  <% if (message_list.length > 0) { %> <% message_list.forEach(message => { %>
+  <dt><%= message.title %></dt>
+  <dd><%= message.text %></dd>
+  <% if (currentUser && (currentUser.status === 'club' || currentUser.admin)) {
+  %>
+  <dd><%= message.member.username %></dd>
+  <dd><%= message.createdAt %></dd>
+  <% if (currentUser.admin) { %>
+  <dd>
+    <form action="/delete-message" method="post">
+      <input
+        type="hidden"
+        id="delete"
+        class="form-control"
+        name="delete"
+        value="<%= message._id %>"
+        required
+      />
+      <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+  </dd>
+  <% }}}); } else { %>
+  <dt>There are no messages.</dt>
+  <% } %>
+</dl>
+<!-- Notes -->
+<%- contentFor('sidebar') %> <% if (currentUser) { action_list =
+['new-message']; if (currentUser.status === 'user' && !currentUser.admin) {
+action_list.push('secret') } action_list.push('logout')} %> <%
+action_list.forEach(action => { %>
+<li><a href="<%= action %>"><%= action %></a></li>
+<% }) %>
