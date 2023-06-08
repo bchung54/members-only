@@ -2,8 +2,8 @@
 
 Simple authentication exercise written in Express.
 
-# Coming Soon
+## Coming Soon
 
-Refactor and Beautify
+~~Refactor~~ and Beautify
 
 Styling
